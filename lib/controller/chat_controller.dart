@@ -12,7 +12,6 @@ final chatControllerProvider = Provider((ref) {
 
 class ChatController {
   Ref _ref;
-
   ChatController(this._ref);
 
   void insert(ChatInsertReqDto dto) {
