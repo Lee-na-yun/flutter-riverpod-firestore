@@ -20,4 +20,6 @@ class ChatInsertReqDto {
       );
 }
 
-//class ChatDeleteReqDto {}
+// class ChatDeleteReqDto {
+//
+// }

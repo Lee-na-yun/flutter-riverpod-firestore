@@ -19,11 +19,7 @@ class ChatRoomPage extends ConsumerWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Random random = Random();
-          ChatInsertReqDto dto = ChatInsertReqDto(
-            from: "ssar${random.nextDouble()}",
-            to: "cos",
-            msg: "hello-${random.nextInt(100)}",
-          );
+          ChatInsertReqDto dto = ChatInsertReqDto(from: "ssar", to: "cos", msg: "hello - ${random.nextInt(100)}");
           chatController.insert(dto);
         },
         child: Icon(Icons.add),
@@ -36,7 +32,6 @@ class ChatRoomPage extends ConsumerWidget {
     return chatStream.when(
       data: (chats) {
         if (chats.isNotEmpty) {
-          //값이있으면 listview를 뿌림
           return ListView.separated(
             itemCount: chats.length,
             itemBuilder: (context, index) => ListTile(
@@ -47,12 +42,15 @@ class ChatRoomPage extends ConsumerWidget {
           );
         } else {
           return Center(
-            child: Text("채팅 내역 없음", style: TextStyle(fontSize: 50)),
+            child: Text(
+              "채팅 내역 없음",
+              style: TextStyle(fontSize: 50),
+            ),
           );
         }
       },
-      error: (error, stackTrace) => const CircularProgressIndicator(),
-      loading: () => const CircularProgressIndicator(),
+      error: (error, stackTrace) => CircularProgressIndicator(),
+      loading: () => CircularProgressIndicator(),
     );
   }
 
